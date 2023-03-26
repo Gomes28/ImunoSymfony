@@ -1,5 +1,20 @@
+# config/routes.yaml
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: annotation
+
+app_logout:
+  path: /logout
+
+admin_logout:
+  path: /admin/logout
+
+app_product_new:
+  path: /admin/product/new
+  controller: App\Controller\admin\ProductController::new
+
+app_product_id:
+  path: /product/{id}
+  controller: App\Controller\user\ProductsController::FindId

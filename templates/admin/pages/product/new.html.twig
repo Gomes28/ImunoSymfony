@@ -1,0 +1,51 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block content %}
+<div style="margin-left: 300px">
+    <h1 class="text-base font-semibold leading-7 text-gray-900 mt-3">Criar Novo Produto</h1>
+    <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+
+    {{ form_start(ProductForm) }}
+    <div class="grid grid-cols-2 md:grid-cols-2 gap-1 mt-10">
+        <div>
+            {{ form_label(ProductForm.name, 'Nome', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+            {{ form_widget(ProductForm.name, {'attr': {'class': 'block w-11/12 shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_errors(ProductForm.name) }}
+        </div>
+        <div>
+            {{ form_label(ProductForm.description, 'Descricao', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+            {{ form_widget(ProductForm.description, {'attr': {'class': 'block w-11/12 shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_errors(ProductForm.description) }}
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-2 gap-1 mt-10">
+        <div>
+            {{ form_label(ProductForm.price, 'Valor', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+            {{ form_widget(ProductForm.price, {'attr': {'class': 'block w-11/12 shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_errors(ProductForm.price) }}
+        </div>
+        <div>
+            {{ form_label(ProductForm.category, 'Category', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+            {{ form_widget(ProductForm.category, {'attr': {'class': 'block w-11/12 shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_errors(ProductForm.category) }}
+        </div>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-2 gap-1 mt-10">
+        <div>
+            {{ form_label(ProductForm.imageFile, 'Image', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+            {{ form_widget(ProductForm.imageFile, {'attr': {'class': 'block w-11/12 shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_errors(ProductForm.imageFile) }}
+        </div>
+    </div>
+
+    <div>
+        <button type="submit"
+                class="block w-11/12 al-center shadow-sm border-transparent bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-md border p-2 mt-4 mb-2">Criar Produto</button>
+    </div>
+
+    {{ form_end(ProductForm) }}
+</div>
+
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <header>
+        {{ include('front/components/header.html.twig') }}
+    </header>
+    <body>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    </body>
+
+    <footer>
+        {{ include('front/components/footer.html.twig') }}
+    </footer>
+{% endblock %}

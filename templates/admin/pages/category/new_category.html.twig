@@ -1,0 +1,37 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block content %}
+    <div style="margin-left: 280px; width: 80%; margin-top: 30px;">
+        <h1 class="text-base font-semibold leading-7 text-gray-900">Criar Nova Categoria</h1>
+        <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+
+        {{ form_start(CategoryForm) }}
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-10">
+            <div>
+                {{ form_label(CategoryForm.name, 'Nome', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+                {{ form_widget(CategoryForm.name, {'attr': {'class': 'block w-full shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+                {{ form_errors(CategoryForm.name) }}
+            </div>
+            <div>
+                {{ form_label(CategoryForm.description, 'Descricao', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+                {{ form_widget(CategoryForm.description, {'attr': {'class': 'block w-full shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+                {{ form_errors(CategoryForm.description) }}
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-1 mt-10">
+            <div>
+                {{ form_label(CategoryForm.imageFile, 'Image', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+                {{ form_widget(CategoryForm.imageFile, {'attr': {'class': 'block w-11/12 shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+                {{ form_errors(CategoryForm.imageFile) }}
+            </div>
+        </div>
+
+        <div>
+            <button type="submit"
+                    class="block w-full shadow-sm border-transparent bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-md border p-2 mt-4 mb-2">Criar Categoria</button>
+        </div>
+        {{ form_end(CategoryForm) }}
+
+    </div>
+{% endblock %}
