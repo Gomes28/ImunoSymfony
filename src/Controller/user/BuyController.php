@@ -63,7 +63,6 @@ class BuyController extends AbstractController
             $item = $mercadoPagoService->createItem($paymentName, 1, $cartTotalPrice);
             $preference = $this->createPreferenceMP($item, $idReference);
 
-            dd($preference);
                 if ($preference->save()) {
                     $buy = new Buy();
                     $buy->setUser($this->getUser());

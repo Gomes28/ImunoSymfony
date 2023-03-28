@@ -2,7 +2,6 @@
 
 {% block content %}
 {{ render(controller('App\\Controller\\user\\ProductsController::index')) }}
-{{ render(controller('App\\Controller\\user\\CategoryController::index')) }}
     <br/>
-    <br/>
+    {{ include('front/components/_teamSection.html.twig') }}
 {% endblock %}
