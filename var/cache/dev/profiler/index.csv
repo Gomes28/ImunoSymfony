@@ -1,0 +1,7 @@
+cc1029,::1,GET,http://localhost:8081/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255Cuser%255CProductsController%253A%253Aindex,1679977140,4e3eea,200
+3a2f70,::1,GET,http://localhost:8081/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255Cuser%255CCategoryController%253A%253Aindex,1679977140,4e3eea,200
+4e3eea,::1,GET,http://localhost:8081/,1679977140,,200
+57babd,::1,GET,http://localhost:8081/product/1,1679977156,,200
+91ac3a,::1,POST,http://localhost:8081/buy/vacin,1679977167,,302
+9c8ad7,::1,GET,http://localhost:8081/cart/add/1/1/48,1679977169,,302
+d05a5c,::1,GET,http://localhost:8081/buy/checkout/48,1679977175,,200

@@ -1,0 +1,8 @@
+{% extends 'front/base.html.twig' %}
+
+{% block content %}
+{{ render(controller('App\\Controller\\user\\ProductsController::index')) }}
+{{ render(controller('App\\Controller\\user\\CategoryController::index')) }}
+    <br/>
+    <br/>
+{% endblock %}
