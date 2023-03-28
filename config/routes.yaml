@@ -18,3 +18,19 @@ app_product_new:
 app_product_id:
   path: /product/{id}
   controller: App\Controller\user\ProductsController::FindId
+
+cart_add:
+  path: /cart/add/{productId}/{quantity}/{BuyId}
+  controller: App\Controller\user\CartController::add
+
+cart_view:
+  path: /cart/view
+  controller: App\Controller\user\CartController::view
+
+cart_remove:
+  path: /cart/remove/{productId}
+  controller: App\Controller\user\CartController::remove
+
+payment_update_reference:
+  path: /update/reference/{reference}
+  controller: App\Controller\user\PaymentController::reference

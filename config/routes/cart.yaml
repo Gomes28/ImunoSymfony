@@ -1,9 +1,13 @@
 # config/routes/cart.yaml
 
 cart_add:
-  path: /cart/add/{productId}/{quantity}
+  path: /cart/add/{productId}/{quantity}/{BuyId}
   controller: App\Controller\CartController::add
 
 cart_view:
   path: /cart/view
   controller: App\Controller\CartController::view
+
+cart_remove:
+  path: /cart/remove/{productId}
+  controller: App\Controller\CartController::remove

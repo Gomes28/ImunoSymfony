@@ -3,7 +3,6 @@
 namespace App\Service;
 
 use MercadoPago\Item;
-use MercadoPago\Payment;
 use MercadoPago\Preference;
 use MercadoPago\SDK;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
@@ -11,9 +10,9 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class MercadoPagoService
 {
 
-    public function __construct(ParameterBagInterface $parameterBag)
+    public function __construct()
     {
-        SDK::setAccessToken($parameterBag->get('MERCADOPAGO_TOKEN'));
+        SDK::setAccessToken('TEST-759260301552446-010611-7b5584773697cb6b893224bef079fa85-660382018');
     }
 
 
@@ -52,32 +51,31 @@ class MercadoPagoService
 
     }
 
-//    public function setFacebookPix(Preference $preference,$pixcode){
-//        $preference->tracks = [
-//            [
-//                'type' => 'facebook_ad',
-//                'values' => [
-//                    'pixel_id' => strval($pixcode)
-//                ]
-//            ]
-//        ];
-//    }
+    public function setFacebookPix(Preference $preference,$pixcode){
+        $preference->tracks = [
+            [
+                'type' => 'facebook_ad',
+                'values' => [
+                    'pixel_id' => strval($pixcode)
+                ]
+            ]
+        ];
+    }
 
     public function setExternalReference(Preference $preference,$reference){
         $preference->external_reference = $reference;
     }
 
-    public function setUrlNotification(Preference $preference,$url){
+    public function setNotificationUrl(Preference $preference,$url){
         $preference->notification_url = $url;
     }
 
-    public function createItem($name, $amount, $total_payment){
+    public function createItem($name, $amount,$value){
 
-        $numberFormat = substr_replace($total_payment, '.', -2, 0);
         $item = new Item();
         $item->title = $name;
         $item->quantity = $amount;
-        $item->unit_price =  $numberFormat;
+        $item->unit_price =  $value;
         return $item;
     }
 

@@ -2,11 +2,25 @@
 
 namespace App\Service;
 
-class Cart
-{
-    private $items = [];
+use App\Entity\Products;
+use App\Item\CartItem;
+use App\Repository\ProductsRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
-    public function add(Product $product, int $quantity = 1)
+class CartService
+{
+    private $session;
+    private $entityManager;
+    private $items = [];
+    private $productRepository;
+
+    public function __construct(EntityManagerInterface $entityManager, ProductsRepository $productRepository, )
+    {
+        $this->entityManager = $entityManager;
+        $this->productRepository = $productRepository;
+    }
+    public function add(Products $product, int $quantity)
     {
         $productId = $product->getId();
 
@@ -15,20 +29,31 @@ class Cart
         } else {
             $this->items[$productId] = new CartItem($product, $quantity);
         }
+
+        return $this->items;
     }
+
 
     public function addItem($productId, $quantity)
     {
         if (isset($this->items[$productId])) {
-            $this->items[$productId] += $quantity;
+            $this->items[$productId]->setQuantity($this->items[$productId]->getQuantity() + $quantity);
         } else {
-            $this->items[$productId] = $quantity;
+            $product = $this->productRepository->find($productId);
+            $this->items[$productId] = new CartItem($product, $quantity);
         }
     }
 
-    public function removeItem($productId)
+    public function remove($productId)
     {
-        unset($this->items[$productId]);
+        if (isset($this->items[$productId])) {
+            unset($this->items[$productId]);
+        }
+        // Se não houver mais nenhum item no carrinho, limpa o carrinho
+        if (count($this->items) === 0) {
+            $this->items = [];
+        }
+        return $this->items;
     }
 
     public function getItems()
@@ -36,8 +61,12 @@ class Cart
         return $this->items;
     }
 
-    public function getTotal()
+    public function getTotal(): float
     {
-        // Lógica para calcular o total do carrinho
+        $total = 0;
+        foreach ($this->items as $item) {
+            $total += $item->getProduct()->getPrice() * $item->getQuantity();
+        }
+        return $total;
     }
 }

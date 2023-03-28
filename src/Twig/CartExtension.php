@@ -2,7 +2,7 @@
 
 namespace App\Twig;
 
-use App\Cart;
+use App\Service\CartService;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
@@ -10,7 +10,7 @@ class CartExtension extends AbstractExtension
 {
     private $cart;
 
-    public function __construct(Cart $cart)
+    public function __construct(CartService $cart)
     {
         $this->cart = $cart;
     }
