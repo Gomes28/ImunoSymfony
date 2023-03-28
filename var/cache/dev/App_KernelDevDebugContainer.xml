@@ -480,6 +480,7 @@
     <service id="App\Entity\Category" class="App\Entity\Category" public="true" autowire="true" autoconfigure="true"/>
     <service id="App\Entity\Config" class="App\Entity\Config" public="true" autowire="true" autoconfigure="true"/>
     <service id="App\Entity\Products" class="App\Entity\Products" public="true" autowire="true" autoconfigure="true"/>
+    <service id="App\Entity\ReturnMp" class="App\Entity\ReturnMp" public="true" autowire="true" autoconfigure="true"/>
     <service id="App\Entity\User" class="App\Entity\User" public="true" autowire="true" autoconfigure="true"/>
     <service id="App\Form\CategoryFormType" class="App\Form\CategoryFormType" public="true" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
@@ -517,6 +518,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ProductsRepository" class="App\Repository\ProductsRepository" public="true" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\ReturnMpRepository" class="App\Repository\ReturnMpRepository" public="true" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -4472,7 +4477,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.Zi4ZhWs"/>
+      <argument type="service" id=".service_locator.DzbgLNg"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -6795,6 +6800,8 @@
     <service id=".abstract.instanceof.App\Repository\ConfigRepository" class="App\Repository\ConfigRepository" public="true" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProductsRepository" class="App\Repository\ProductsRepository" public="true" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProductsRepository" class="App\Repository\ProductsRepository" public="true" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ReturnMpRepository" class="App\Repository\ReturnMpRepository" public="true" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ReturnMpRepository" class="App\Repository\ReturnMpRepository" public="true" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" public="true" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" public="true" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.7nzbL4K" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -7582,7 +7589,7 @@
         <argument key="doctrine.orm.messenger.doctrine_schema_listener" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_listener"/>
       </argument>
     </service>
-    <service id=".service_locator.Zi4ZhWs" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.DzbgLNg" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AdminRepository" type="service_closure" id="App\Repository\AdminRepository"/>
@@ -7592,6 +7599,7 @@
         <argument key="App\Repository\CategoryRepository" type="service_closure" id="App\Repository\CategoryRepository"/>
         <argument key="App\Repository\ConfigRepository" type="service_closure" id="App\Repository\ConfigRepository"/>
         <argument key="App\Repository\ProductsRepository" type="service_closure" id="App\Repository\ProductsRepository"/>
+        <argument key="App\Repository\ReturnMpRepository" type="service_closure" id="App\Repository\ReturnMpRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>

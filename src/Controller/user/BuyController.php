@@ -63,9 +63,7 @@ class BuyController extends AbstractController
             $item = $mercadoPagoService->createItem($paymentName, 1, $cartTotalPrice);
             $preference = $this->createPreferenceMP($item, $idReference);
 
-
-//           $this->setConfigPreferenceMP($mercadoPagoService, $preference, $idReference);
-
+            dd($preference);
                 if ($preference->save()) {
                     $buy = new Buy();
                     $buy->setUser($this->getUser());
@@ -114,6 +112,8 @@ class BuyController extends AbstractController
         );
 
         return $preference;
+
+        dd($preference);
     }
 
     public function setNotificationUrl(Preference $preference, $idReference)

@@ -3,7 +3,9 @@
 namespace App\Controller\user;
 
 use App\Entity\Buy;
+use App\Entity\ReturnMp;
 use App\Repository\BuyRepository;
+use App\Repository\ReturnMpRepository;
 use App\Service\MercadoPagoService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,27 +22,33 @@ class PaymentController extends AbstractController
                               BuyRepository $buyRepository,
                               EntityManagerInterface $entityManager): Response
     {
-        $data = array_merge($request->query->all(), $request->request->all());
+        $data = json_decode($request->getContent(), true);
 
-        $idReference = $data['data_id'];
+        $ReturnMp = new ReturnMp();
+        $ReturnMp->setDadosMp($data);
 
-        $payment = $mercadoPagoService->findById($idReference);
+        $entityManager->persist($ReturnMp);
+        $entityManager->flush();
 
-        dd($payment);
-
-        if ($payment) {
-
-            try {
-                $status = $payment->status;
-                /** @var Buy $buy */
-                $buy = $buyRepository->findForReference($reference);
-
-                $response = ['status' => $status, 'buy' => $buy?->getId(), 'referenceID' => $idReference];
-
-            } catch (\Exception $e) {
-                dd($e);
-            }
-        }
-            return new Response(null, 500);
+//        $idReference = $data['data_id'];
+//
+//        $payment = $mercadoPagoService->findById($idReference);
+//
+//        dd($payment);
+//
+//        if ($payment) {
+//
+//            try {
+//                $status = $payment->status;
+//                /** @var Buy $buy */
+//                $buy = $buyRepository->findForReference($reference);
+//
+//                $response = ['status' => $status, 'buy' => $buy?->getId(), 'referenceID' => $idReference];
+//
+//            } catch (\Exception $e) {
+//                dd($e);
+//            }
+//        }
+            return new Response('ok!', 200);
     }
 }
