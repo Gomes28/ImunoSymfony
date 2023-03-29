@@ -48,7 +48,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/minhas-compras', name: 'app_user_cliente')]
+    #[Route('/minhas-compras', name: 'app_user_minhas_compras')]
     public function Compras(Request $resquest,): Response
     {
 
