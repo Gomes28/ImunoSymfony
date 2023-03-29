@@ -1,0 +1,3 @@
+<?php //App%255CEntity%255CBanner
+
+return [PHP_INT_MAX, []];

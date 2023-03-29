@@ -1,7 +1,10 @@
 {% extends 'front/base.html.twig' %}
 
 {% block content %}
+{{ include('front/components/banner.html.twig') }}
 {{ render(controller('App\\Controller\\user\\ProductsController::index')) }}
     <br/>
     {{ include('front/components/_teamSection.html.twig') }}
+    {{ include('front/components/feedback.html.twig') }}
+    {{ include('front/components/empresas.html.twig') }}
 {% endblock %}

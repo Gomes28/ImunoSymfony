@@ -1,68 +1,76 @@
 {% extends 'front/base.html.twig' %}
 
 {% block content %}
-
+ <div style="margin-left: 30px; margin-right: 30px; margin-top: 20px">
     {{ form_start(registrationForm) }}
-    <div class="text-xl">
-    Informações Iniciais
+    <div class="text-xl font-bold">
+    Ainda não possui uma conta?
     </div>
     <div class="text-gray-500 mb-4 pb-4 border-b border-gray-300">
-        Preencha os campos
+        Vamos criar agora!
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-            {{ form_label(registrationForm.name, 'Nome', {'label_attr': {'class': 'block text-sm text-gray-700 dark:text-gray-300 font-medium'}}) }}
-            {{ form_widget(registrationForm.name, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_label(registrationForm.name, 'Nome', {'label_attr': {'class': 'block text-sm text-gray-900 dark:text-gray-900 font-medium'}}) }}
+            {{ form_widget(registrationForm.name, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-gray-200 dark:text-gray-800 rounded-md border p-2 mt-1 mb-2'}})}}
             {{ form_errors(registrationForm.name) }}
         </div>
         <div>
-            {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'block text-sm text-gray-700 dark:text-gray-300 font-medium'}}) }}
-            {{ form_widget(registrationForm.email, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_label(registrationForm.email, 'Email', {'label_attr': {'class': 'block text-sm text-gray-900 dark:text-gray-900 font-medium'}}) }}
+            {{ form_widget(registrationForm.email, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-gray-200 dark:text-gray-800 rounded-md border p-2 mt-1 mb-2'}})}}
             {{ form_errors(registrationForm.email) }}
         </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-            {{ form_label(registrationForm.cpf, 'Cpf', {'label_attr': {'class': 'block text-sm text-gray-700 dark:text-gray-300 font-medium'}}) }}
-            {{ form_widget(registrationForm.cpf, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_label(registrationForm.cpf, 'Cpf', {'label_attr': {'class': 'block text-sm text-gray-900 dark:text-gray-900 font-medium'}}) }}
+            {{ form_widget(registrationForm.cpf, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-gray-200 dark:text-gray-800 rounded-md border p-2 mt-1 mb-2', 'data-inputmask': "'mask': '999.999.999-99'"}})}}
             {{ form_errors(registrationForm.cpf) }}
         </div>
         <div>
-            {{ form_label(registrationForm.telefone, 'Telefone', {'label_attr': {'class': 'block text-sm text-gray-700 dark:text-gray-300 font-medium'}}) }}
-            {{ form_widget(registrationForm.telefone, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_label(registrationForm.telefone, 'Telefone', {'label_attr': {'class': 'block text-sm text-gray-900 dark:text-gray-900 font-medium'}}) }}
+            {{ form_widget(registrationForm.telefone, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-gray-200 dark:text-gray-800 rounded-md border p-2 mt-1 mb-2', 'data-inputmask': "'mask': '(99) 99999-9999'"}})}}
             {{ form_errors(registrationForm.telefone) }}
         </div>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-            {{ form_label(registrationForm.plainPassword.first, 'Senha', {'label_attr': {'class': 'block text-sm text-gray-700 dark:text-gray-300 font-medium'}}) }}
-            {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_label(registrationForm.plainPassword.first, 'Senha', {'label_attr': {'class': 'block text-sm text-gray-900 dark:text-gray-900 font-medium'}}) }}
+            {{ form_widget(registrationForm.plainPassword.first, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-gray-200 dark:text-gray-800 rounded-md border p-2 mt-1 mb-2'}})}}
             {{ form_errors(registrationForm.plainPassword.first) }}
         </div>
         <div>
-            {{ form_label(registrationForm.plainPassword.second, 'Senha', {'label_attr': {'class': 'block text-sm text-gray-700 dark:text-gray-300 font-medium'}}) }}
-            {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-transparent dark:text-gray-800 rounded-md border p-2 mt-1 mb-2'}})}}
+            {{ form_label(registrationForm.plainPassword.second, 'Confirmar senha', {'label_attr': {'class': 'block text-sm text-gray-900 dark:text-gray-900 font-medium'}}) }}
+            {{ form_widget(registrationForm.plainPassword.second, {'attr': {'class': 'block w-full shadow-sm border-gray-300 dark:border-gray-200 dark:text-gray-800 rounded-md border p-2 mt-1 mb-2'}})}}
             {{ form_errors(registrationForm.plainPassword.second) }}
         </div>
     </div>
 
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     <div class="flex items-center mt-4 mb-4">
         {{ form_widget(registrationForm.agreeTerms, {'attr': {'class': 'h-4 w-4 rounded border-gray border text-indigo-300 mr-2'}}) }}
         {{ form_label(registrationForm.agreeTerms, 'Aceite os Termos', {'label_attr': {'class': 'text-sm text-gray-700 dark:text-gray-300 font-medium'}}) }}
     </div>
 
-    <div class="border-b border-gray-300"></div>
-
-    <div>
-        <button type="submit"
-                class="block w-full shadow-sm border-transparent bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-md border p-2 mt-4 mb-2">Criar Conta</button>
+     <div class="flex items-center mt-4 mb-4 justify-end">
+         <button type="submit"
+                 class="block w-9/12 shadow-sm border-transparent bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-md border p-2 mt-4 mb-2">Criar Conta</button>
+     </div>
     </div>
+
     {{ form_end(registrationForm) }}
 
-    <div class="mt-2 text-center text-gray-600 dark:text-gray-400">
-        Already have an account? <a href="{{ path('app_user_register') }}">Login here</a>
+    <div class="mt-4 text-center text-gray-600 dark:text-gray-400">
+        Já possui uma conta? <a href="{{ path('app_user_login') }}">Faça Login</a>
     </div>
+ </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/5.0.5/jquery.inputmask.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(":input").inputmask();
+        });
+    </script>
 {% endblock %}

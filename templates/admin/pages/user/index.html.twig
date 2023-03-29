@@ -11,17 +11,17 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
                     <th scope="col" class="px-6 py-3">
-                        Produto
+                        Nome
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Descricao
+                        Email
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Valor
+                        Role
                     </th>
                     {% if is_granted('ROLE_ADMIN') %}
                         <th scope="col" class="px-6 py-3">
-                            Edição
+                            Apagar
                         </th>
                     {% endif %}
                 </tr>
@@ -46,7 +46,7 @@
                             {{ role }}
                         </td>
                             <td class="px-6 py-4">
-                                <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                                <a href="#" class="font-medium text-blue-600 dark:text-red-500 hover:underline">Apagar</a>
                             </td>
                     </tr>
                     </tbody>
