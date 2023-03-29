@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'c53070cae38421fdaa79889d95506f13dcb9f065',
+        'reference' => '53dac86c80a5ad0322d7ffc09de0a676d0ee1084',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'c53070cae38421fdaa79889d95506f13dcb9f065',
+            'reference' => '53dac86c80a5ad0322d7ffc09de0a676d0ee1084',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -311,9 +311,9 @@
             'dev_requirement' => false,
         ),
         'phpdocumentor/type-resolver' => array(
-            'pretty_version' => '1.7.0',
-            'version' => '1.7.0.0',
-            'reference' => '1534aea9bde19a5c85c5d1e1f834ab63f4c5dcf5',
+            'pretty_version' => '1.7.1',
+            'version' => '1.7.1.0',
+            'reference' => 'dfc078e8af9c99210337325ff5aa152872c98714',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpdocumentor/type-resolver',
             'aliases' => array(),
@@ -692,7 +692,7 @@
         'symfony/cache' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => '9fbb6081c832bddd5d964485086682791920d9eb',
+            'reference' => '605bd3f42a78ca75b2ad7a1170d7e9efff288fb6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/cache',
             'aliases' => array(),
@@ -734,7 +734,7 @@
         'symfony/console' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => 'd5249b03fbc66e6dd01b4030add8218580e6800e',
+            'reference' => '244eb2cac9abec8828ee0cdb572bb380cfec278e',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/console',
             'aliases' => array(),
@@ -761,7 +761,7 @@
         'symfony/dependency-injection' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => '2926cd2c0b03d4319792169f8f09d6061c874cd0',
+            'reference' => 'a75fc8cc52f5c5d65047f728beca149ef2124850',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/dependency-injection',
             'aliases' => array(),
@@ -884,7 +884,7 @@
         'symfony/form' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => 'ce99d4ab880c51c3ddc43119792137642fa85aee',
+            'reference' => '1909c4afe6961801a1c24ebbcf786550cabb09f8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/form',
             'aliases' => array(),
@@ -902,7 +902,7 @@
         'symfony/http-client' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => 'f389d99cd45555648f3629195e0c5cd3328d3656',
+            'reference' => 'f312fd7fbd89ced06dfc79a5f5f88ac18b6040e1',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/http-client',
             'aliases' => array(),
@@ -926,7 +926,7 @@
         'symfony/http-foundation' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => '3665b191916aadc7411981de82a13795d43df35f',
+            'reference' => 'c689022caa6aeb31c5022a8f73f4f3c00a84911d',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/http-foundation',
             'aliases' => array(),
@@ -935,7 +935,7 @@
         'symfony/http-kernel' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => 'b463dccd620fb0a4eb9302b93c13ee1662f8f2c6',
+            'reference' => 'b2168d689694654e13b7471b70d8b011f72265c8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/http-kernel',
             'aliases' => array(),
@@ -1139,7 +1139,7 @@
         'symfony/process' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => '25e5f8662af68a432bef229d4f0939b393e8410e',
+            'reference' => '4d13cb8981e6509d1adfcf9d2019a86b631d2e2c',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/process',
             'aliases' => array(),
@@ -1220,7 +1220,7 @@
         'symfony/serializer' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => 'fcb11e237ff714213057511594dac72b234f009a',
+            'reference' => 'bc152a92362a66f45c204513fd6bc479b6a514cd',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/serializer',
             'aliases' => array(),
@@ -1253,7 +1253,7 @@
         'symfony/string' => array(
             'pretty_version' => '6.3.x-dev',
             'version' => '6.3.9999999.9999999-dev',
-            'reference' => '01204629fd5c1db46e6c9181a5a2933c33bbfff8',
+            'reference' => 'f2e190ee75ff0f5eced645ec0be5c66fac81f51f',
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/string',
             'aliases' => array(),
