@@ -16,10 +16,18 @@ class SchoolVacinType extends AbstractType
         ;
     }
 
-    public function configureOptions(OptionsResolver $resolver): void
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => SchoolVacin::class,
+            'empty_data' => function (FormInterface $form) {
+                return new SchoolVacin(
+                    $form->get('name')->getData()
+                );
+            },
+            'allow_extra_fields' => true,
+            'csrf_protection' => false,
         ]);
     }
+
 }

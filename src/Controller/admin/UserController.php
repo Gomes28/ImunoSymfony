@@ -13,7 +13,11 @@ class UserController extends AbstractController
     #[Route('/admin/user', name: 'app_admin_user')]
     public function index(UserRepository $user): Response
     {
-        $users = $user->findAll();
+        $users = $user->createQueryBuilder('u')
+            ->where('u.roles LIKE :roles')
+            ->setParameter('roles', '%ROLE_USER%')
+            ->getQuery()
+            ->getResult();
         return $this->render('admin/pages/user/index.html.twig', [
             'users' => $users,
         ]);
@@ -23,6 +27,8 @@ class UserController extends AbstractController
     public function Id($id, UserRepository $user): Response
     {
         $users = $user->find($id);
+
+        dd($users);
         return $this->render('admin/pages/user/id.html.twig', [
             'users' => $users,
         ]);

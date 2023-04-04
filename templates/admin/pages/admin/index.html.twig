@@ -3,8 +3,10 @@
 {% block content %}
     <div style="margin-left: 280px">
         <div class="mt-6">
-            <h1 class="text-base font-semibold leading-7 text-gray-900">Lista de Usuarios</h1>
+            <h1 class="text-base font-semibold leading-7 text-gray-900">Lista de Admin</h1>
             <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+            <a href="{{ path('app_admin_new') }}"><button type="button" class="py-2.5 px-5 mr-2 mt-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Novo Admin</button>
+            </a>
         </div>
         <div class="h-5/6 relative overflow-x-auto shadow-md sm:rounded-lg mt-8 mr-2">
             <table class="w-full h-5/6 text-sm text-left text-gray-500 dark:text-gray-400">
@@ -17,13 +19,17 @@
                         Email
                     </th>
                     <th scope="col" class="px-6 py-3">
-                        Role
+                        CPF
                     </th>
-                    {% if is_granted('ROLE_ADMIN') %}
-                        <th scope="col" class="px-6 py-3">
-                            Apagar
-                        </th>
-                    {% endif %}
+                    <th scope="col" class="px-6 py-3">
+                        TELEFONE
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Editar
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Apagar
+                    </th>
                 </tr>
                 </thead>
                 {% for admin in admins %}
@@ -39,10 +45,13 @@
                             {{ admin.cpf }}
                         </td>
                         <td class="px-6 py-4">
-                            Admin
+                            {{ admin.telefone }}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-red-500 hover:underline">Apagar</a>
+                            <a href="{{ path('app_admin_edit', {'id': admin.id}) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Editar</a>
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="{{ path('app_admin_delete', {'id': admin.id }) }}" class="font-medium text-blue-600 dark:text-red-500 hover:underline">Apagar</a>
                         </td>
                     </tr>
                     </tbody>

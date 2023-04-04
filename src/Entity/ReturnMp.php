@@ -16,6 +16,9 @@ class ReturnMp
     #[ORM\Column(length: 10000, nullable: true)]
     private ?array $dadosMp = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $id_mp = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -29,6 +32,18 @@ class ReturnMp
     public function setDadosMp(?array $dadosMp): self
     {
         $this->dadosMp = $dadosMp;
+
+        return $this;
+    }
+
+    public function getIdMp(): ?string
+    {
+        return $this->id_mp;
+    }
+
+    public function setIdMp(string $id_mp): self
+    {
+        $this->id_mp = $id_mp;
 
         return $this;
     }

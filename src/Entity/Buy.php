@@ -33,6 +33,18 @@ class Buy
     #[ORM\Column(length: 255)]
     private ?string $status = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Buy')]
+    private ?PromotionSistem $promotionSistem = null;
+
+    #[ORM\ManyToOne]
+    private ?Products $Product_id = null;
+
+    #[ORM\Column(length: 30, nullable: true)]
+    private ?string $Date = null;
+
+    #[ORM\Column(length: 10, nullable: true)]
+    private ?string $Time = null;
+
     public function __construct()
     {
         $this->created_at = new \DateTimeImmutable('now');
@@ -111,6 +123,54 @@ class Buy
     public function setStatus(string $status): self
     {
         $this->status = $status;
+
+        return $this;
+    }
+
+    public function getPromotionSistem(): ?PromotionSistem
+    {
+        return $this->promotionSistem;
+    }
+
+    public function setPromotionSistem(?PromotionSistem $promotionSistem): self
+    {
+        $this->promotionSistem = $promotionSistem;
+
+        return $this;
+    }
+
+    public function getProductId(): ?Products
+    {
+        return $this->Product_id;
+    }
+
+    public function setProductId(Products $Product_id): self
+    {
+        $this->Product_id = $Product_id;
+
+        return $this;
+    }
+
+    public function getDate(): ?string
+    {
+        return $this->Date;
+    }
+
+    public function setDate(?string $Date): self
+    {
+        $this->Date = $Date;
+
+        return $this;
+    }
+
+    public function getTime(): ?string
+    {
+        return $this->Time;
+    }
+
+    public function setTime(?string $Time): self
+    {
+        $this->Time = $Time;
 
         return $this;
     }

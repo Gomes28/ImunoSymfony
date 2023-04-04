@@ -2,8 +2,11 @@
 
 namespace App\Controller\user;
 
+use App\Entity\Buy;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\BuyRepository;
+use App\Repository\ProductsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -13,21 +16,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UserController extends AbstractController
 {
-    #[Route('/user', name: 'app_user')]
-    public function index(): Response
-    {
-        return $this->render('user/login.html.twig', [
-            'controller_name' => 'UserController',
-        ]);
-    }
-
     #[Route('/signup', name: 'app_user_register')]
     public function register(Request $resquest, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager): Response
     {
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($resquest);
-        $user->setRoles(['ROLE_ADMIN']);
+        $user->setRoles(['ROLE_USER']);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $user->setPassword(
@@ -49,9 +44,14 @@ class UserController extends AbstractController
     }
 
     #[Route('/minhas-compras', name: 'app_user_minhas_compras')]
-    public function Compras(Request $resquest,): Response
+    #[IsGranted('ROLE_USER')]
+    public function Compras(Request $request, BuyRepository $buyRepository, ProductsRepository $productsRepository): Response
     {
+        $idUsuario = $this->getUser()->getId();
+        $compras = $buyRepository->findBy(['user' => $idUsuario]);
 
-        return $this->render('front/page/cliente.html.twig');
+        return $this->render('front/page/cliente.html.twig', [
+            'compras' => $compras
+        ]);
     }
 }

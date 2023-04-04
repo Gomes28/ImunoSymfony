@@ -20,10 +20,9 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 class BuyController extends AbstractController
 {
-
-    #[Route('/buy/checkout/{BuyId}', name: 'app_buy_checkout')]
+    #[Route('/buy/checkout/{BuyId}/{ProductId}', name: 'app_buy_checkout')]
     #[IsGranted('ROLE_USER')]
-    public function index($BuyId, CartService $cart, SessionInterface $session,
+    public function index($BuyId, $ProductId, CartService $cart, SessionInterface $session,
                           ProductsRepository $productsRepository,
                           BuyVacinRepository $buyVacin,
                           EntityManagerInterface $entityManager,
@@ -56,7 +55,9 @@ class BuyController extends AbstractController
 
         $mercadoPagoService = new MercadoPagoService();
 
-        $buyVacinId = $entityManager->getRepository($BuyVacin::class)->find($BuyId);
+        $buyVacin = $entityManager->getRepository($BuyVacin::class)->find($BuyId);
+
+        $product = $productsRepository->find($ProductId);
 
         try {
             $idReference = StringResources::generateRandom();
@@ -67,8 +68,9 @@ class BuyController extends AbstractController
                     $buy = new Buy();
                     $buy->setUser($this->getUser());
                     $buy->setTotalPayment($cartTotalPrice);
-                    $buy->setBuyVacin($buyVacinId);
+                    $buy->setBuyVacin($buyVacin);
                     $buy->setIdMl($idReference);
+                    $buy->setProductId($product);
                     $entityManager->persist($buy);
                     $entityManager->flush();
                 } else {
@@ -111,8 +113,6 @@ class BuyController extends AbstractController
         );
 
         return $preference;
-
-        dd($preference);
     }
 
     public function setNotificationUrl(Preference $preference, $idReference)

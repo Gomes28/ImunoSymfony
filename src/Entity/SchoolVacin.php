@@ -15,6 +15,9 @@ class SchoolVacin
 
     #[ORM\Column(length: 255)]
     private ?string $Name = null;
+
+    #[ORM\Column]
+    private array $Status = [];
     public function getId(): ?int
     {
         return $this->id;
@@ -28,6 +31,18 @@ class SchoolVacin
     public function setName(string $Name): self
     {
         $this->Name = $Name;
+
+        return $this;
+    }
+
+    public function getStatus(): array
+    {
+        return $this->Status;
+    }
+
+    public function setStatus(array $Status): self
+    {
+        $this->Status = $Status;
 
         return $this;
     }

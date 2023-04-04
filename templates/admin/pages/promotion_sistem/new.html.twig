@@ -1,0 +1,43 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block content %}
+    <div style="margin-left: 300px">
+        <h1 class="text-base font-semibold leading-7 text-gray-900 mt-3">Criar Nova Promoção</h1>
+        <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+
+        {{ form_start(PromotionForm) }}
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-1 mt-10">
+            <div>
+                {{ form_label(PromotionForm.name, 'Nome', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+                {{ form_widget(PromotionForm.name, {'attr': {'class': 'block w-11/12 shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+                {{ form_errors(PromotionForm.name) }}
+            </div>
+            <div>
+                {{ form_label(PromotionForm.description, 'Descricao', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+                {{ form_widget(PromotionForm.description, {'attr': {'class': 'block w-11/12 shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+                {{ form_errors(PromotionForm.description) }}
+            </div>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-1 mt-10">
+            <div>
+                {{ form_label(PromotionForm.imageFile, 'Image', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+                {{ form_widget(PromotionForm.imageFile, {'attr': {'class': 'block w-11/12 shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+                {{ form_errors(PromotionForm.imageFile) }}
+            </div>
+            <div>
+                {{ form_label(PromotionForm.school, 'Parceiro', {'label_attr': {'class': 'block text-sm text-black-700 font-medium'}}) }}
+                {{ form_widget(PromotionForm.school, {'attr': {'class': 'block w-11/12 shadow-sm border-black-300 rounded-md border p-2 mt-1 mb-2'}})}}
+                {{ form_errors(PromotionForm.school) }}
+            </div>
+        </div>
+
+        <div>
+            <button type="submit"
+                    class="block w-11/12 al-center shadow-sm border-transparent bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-400 text-white rounded-md border p-2 mt-4 mb-2">Criar Promoção</button>
+        </div>
+
+        {{ form_end(PromotionForm) }}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,57 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block content %}
+    <div style="margin-left: 280px">
+        <div class="mt-6">
+            <h1 class="text-base font-semibold leading-7 text-gray-900">Lista de Compras {{ promotion.name }}</h1>
+            <p class="mt-1 text-sm leading-6 text-gray-600">Lista de Pedidos do  {{ promotion.name }} </p>
+            <a href="{{ path('app_admin_promotion_buy_export', {'id': promotion.id}) }}"><button type="button" class="py-2.5 px-5 mr-2 mt-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Gerar PDF</button>
+            </a>
+        </div>
+
+        <div class="h-5/6 relative overflow-x-auto shadow-md sm:rounded-lg mt-8 mr-2">
+            <table class="w-full h-5/6 text-sm text-left text-gray-500 dark:text-gray-400">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">
+                        Pedido
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Status
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        ID Mercado Pago
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Valor
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                        Ver Mais
+                    </th>
+                </tr>
+                </thead>
+                {% for buy in buys %}
+                    <tbody>
+                    <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ buy.id }}
+                        </th>
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            {{ buy.Status }}
+                        </th>
+                        <td class="px-6 py-4">
+                            {{ buy.IdMl }}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{ buy.TotalPayment|number_format(2, ',', '.') }}
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="{{ path('app_admin_buy_id', {'id': buy.id }) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ver Mais</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

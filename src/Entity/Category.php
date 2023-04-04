@@ -27,6 +27,9 @@ class Category
     #[ORM\Column(length: 255)]
     private ?string $imageFilename = null;
 
+    #[ORM\ManyToOne(inversedBy: 'time')]
+    private ?PromotionSistem $promotionSistem = null;
+
     public function __construct()
     {
         $this->product_id = new ArrayCollection();
@@ -139,5 +142,17 @@ class Category
     public function getImageFilename(): ?string
     {
         return $this->imageFilename;
+    }
+
+    public function getPromotionSistem(): ?PromotionSistem
+    {
+        return $this->promotionSistem;
+    }
+
+    public function setPromotionSistem(?PromotionSistem $promotionSistem): self
+    {
+        $this->promotionSistem = $promotionSistem;
+
+        return $this;
     }
 }

@@ -40,7 +40,7 @@ class CategoryRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Category[] Returns an array of Category objects
+//     * @return time[] Returns an array of time objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class CategoryRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Category
+//    public function findOneBySomeField($value): ?time
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

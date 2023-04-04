@@ -62,6 +62,14 @@ class BuyRepository extends ServiceEntityRepository
             ->getOneOrNullResult();
     }
 
+    public function searchByMpId($query)
+    {
+        $qb = $this->createQueryBuilder('b');
+        $qb->where($qb->expr()->regexp('b.idMp'))
+            ->setParameter('q', $query);
+        return $qb->getQuery()->getResult();
+    }
+
     public function findForReferenceMP(string $reference)
     {
         $dbquery = $this->createQueryBuilder('b')

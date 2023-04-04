@@ -55,4 +55,44 @@ class CategoryController extends AbstractController
             'CategoryForm' => $CategoryForm
         ]);
     }
+
+    #[Route('/admin/category/edit/{id}', name: 'app_category_edit')]
+    public function edit(CategoryRepository $categoryRepository, Request $request, $id): Response
+    {
+        $category = $categoryRepository->find($id);
+
+        if (!$category) {
+            throw $this->createNotFoundException('time not found');
+        }
+
+        $CategoryForm = $this->createForm(CategoryFormType::class, $category);
+        $CategoryForm->handleRequest($request);
+
+        if ($CategoryForm->isSubmitted() && $CategoryForm->isValid()) {
+            $uploadedFile = $CategoryForm['imageFile']->getData();
+
+            if ($uploadedFile) {
+                $destination = $this->getParameter('kernel.project_dir').'/public/uploads/categorys';
+                $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $newFilename = Urlizer::urlize($originalFilename).'-'.uniqid().'.'.$uploadedFile->guessExtension();
+                $uploadedFile->move(
+                    $destination,
+                    $newFilename
+                );
+                $category->setImageFilename($newFilename);
+            }
+
+            $category->setName($CategoryForm['name']->getData());
+            $category->setDescription($CategoryForm['description']->getData());
+
+            $categoryRepository->save($category, true);
+
+            return $this->redirectToRoute('app_category_index');
+        }
+
+        return $this->render('admin/pages/category/edit_category.html.twig', [
+            'CategoryForm' => $CategoryForm
+        ]);
+    }
+
 }

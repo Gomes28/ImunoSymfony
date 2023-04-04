@@ -11,6 +11,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: BuyVacinRepository::class)]
 class BuyVacin
 {
+    private $Product;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -28,6 +30,12 @@ class BuyVacin
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?SchoolVacin $schoolId = null;
+
+    #[ORM\ManyToOne(inversedBy: 'BuyVacin')]
+    private ?PromotionSistem $promotionSistem = null;
+
+    #[ORM\ManyToOne]
+    private ?Products $Product_id = null;
 
     public function __construct()
     {
@@ -108,6 +116,42 @@ class BuyVacin
     public function setSchoolId(?SchoolVacin $schoolId): self
     {
         $this->schoolId = $schoolId;
+
+        return $this;
+    }
+
+    public function getPromotionSistem(): ?PromotionSistem
+    {
+        return $this->promotionSistem;
+    }
+
+    public function setPromotionSistem(?PromotionSistem $promotionSistem): self
+    {
+        $this->promotionSistem = $promotionSistem;
+
+        return $this;
+    }
+
+    public function getProduct()
+    {
+        return $this->Product;
+    }
+
+    public function setProduct(Products $Product): self
+    {
+        $this->Product = $Product;
+
+        return $this;
+    }
+
+    public function getProductId(): ?Products
+    {
+        return $this->Product_id;
+    }
+
+    public function setProductId(?Products $Product_id): self
+    {
+        $this->Product_id = $Product_id;
 
         return $this;
     }

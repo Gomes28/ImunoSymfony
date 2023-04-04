@@ -1,0 +1,34 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block content %}
+    <div style="margin-left: 280px">
+        <div class="mt-6">
+            <h1 class="text-base font-semibold leading-7 text-gray-900">Informações da Promoção</h1>
+            <p class="mt-1 text-sm leading-6 text-gray-600">This information will be displayed publicly so be careful what you share.</p>
+        </div>
+
+        <div class="mt-6">
+            <h1 class="text-base font-semibold leading-7 text-gray-900">Produtos</h1>
+            <a href="{{ path('app_promotion_new_product', {'id': promotion.id }) }}"><button type="button" class="py-2.5 px-5 mr-2 mt-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Novo Produto</button>
+            </a>
+            <a href="{{ path('app_admin_promotion_product', {'id': promotion.id }) }}"><button type="button" class="py-2.5 px-5 mr-2 mt-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Lista de Produtos</button>
+            </a>
+        </div>
+
+        <div class="mt-6">
+            <h1 class="text-base font-semibold leading-7 text-gray-900">Horário</h1>
+            <a href="{{ path('app_admin_promotion_time_new', {'id': promotion.id}) }}"><button type="button" class="py-2.5 px-5 mr-2 mt-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Novo Horário</button>
+            </a>
+            <a href="{{ path('app_admin_promotion_time', {'id': promotion.id}) }}"><button type="button" class="py-2.5 px-5 mr-2 mt-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Lista de Horários</button>
+            </a>
+        </div>
+
+        <div class="mt-6">
+            <h1 class="text-base font-semibold leading-7 text-gray-900">Compras</h1>
+            <a href="{{ path('app_admin_promotion_buy_list', {'id': promotion.id}) }}"><button type="button" class="py-2.5 px-5 mr-2 mt-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Lista de Compras</button>
+            </a>
+        </div>
+
+
+    </div>
+{% endblock %}

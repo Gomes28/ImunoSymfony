@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use MercadoPago\Item;
+use MercadoPago\Payment;
 use MercadoPago\Preference;
 use MercadoPago\SDK;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;

@@ -23,7 +23,7 @@ class CartController extends AbstractController
         $this->twig = $twig;
     }
 
-    #[Route('/cart/add/{productId}/{quantity}/{BuyId}', name: 'cart_add')]
+    #[Route('/cart/add/{productId}/{quantity}/{BuyId}/', name: 'cart_add')]
     public function add($productId, $quantity, $BuyId, CartService $cart, ProductsRepository $productRepository, SessionInterface $session)
     {
         $product = $productRepository->find($productId);
@@ -32,7 +32,7 @@ class CartController extends AbstractController
         // Save the cart data in the session
         $session->set('cart', $cart->getItems());
 
-        return $this->redirectToRoute('app_buy_checkout', ['BuyId' => $BuyId]);
+        return $this->redirectToRoute('app_buy_checkout', ['BuyId' => $BuyId, 'ProductId' => $productId]);
     }
 
     #[Route('/cart/view', name: 'cart_view')]

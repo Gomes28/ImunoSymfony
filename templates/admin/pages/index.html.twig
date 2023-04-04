@@ -3,18 +3,66 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block content %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    {{ render(controller('App\\Controller\\admin\\AdminController::values')) }}
 
-<div class="example-wrapper">
-    <h1>Hello {{ app.user.email }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/matheus/Documents/Projetos/my_project_directory/src/Controller/AdminController.php'|file_link(0) }}">src/Controller/AdminController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/matheus/Documents/Projetos/my_project_directory/templates/admin/login.html.twig'|file_link(0) }}">templates/admin/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <div style="margin-left: 300px" class="mt-6">
+        <h1 class="text-base font-bold leading-7 text-gray-900">Ultimas Compras</h1>
+    </div>
+    <div style="margin-left: 300px; margin-bottom: 30px" class="h-5/6 relative overflow-x-auto shadow-md sm:rounded-lg mt-8 mr-2">
+        <table class="w-full h-5/6 text-sm text-left text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Pedido
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Status
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Nome
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Valor
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Ver Mais
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Mudar Status
+                </th>
+            </tr>
+            </thead>
+            {% for buy in buys %}
+                <tbody>
+                <tr class="border-b bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ buy.id }}
+                    </th>
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ buy.Status }}
+                    </th>
+                    <td class="px-6 py-4">
+                        {{ buy.user.name }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ buy.user.email }}
+                    </td>
+                    <td class="px-6 py-4">
+                        {{ buy.TotalPayment|number_format(2, ',', '.') }}
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="{{ path('app_admin_buy_id', {'id': buy.id }) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Ver Mais</a>
+                    </td>
+                    <td class="px-6 py-4">
+                        <a href="{{ path('app_admin_buy_status', {'id': buy.id }) }}" class="font-medium text-blue-600 dark:text-red-500 hover:underline">Mudar Status</a>
+                    </td>
+                </tr>
+                </tbody>
+            {% endfor %}
+        </table>
+    </div>
 {% endblock %}

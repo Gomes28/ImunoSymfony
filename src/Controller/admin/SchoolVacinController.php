@@ -25,8 +25,8 @@ class SchoolVacinController extends AbstractController
         ]);
     }
 
-    #[Route('/admin/school/delete/{id}', name: 'app_admin_school_delete')]
-    public function delete(Request $request, SchoolVacinRepository $schools, $id): Response
+    #[Route('/admin/school/status/{id}', name: 'app_admin_school_status')]
+    public function status(Request $request, SchoolVacinRepository $schools, $id): Response
     {
         $school = $schools->find($id);
 
@@ -34,7 +34,15 @@ class SchoolVacinController extends AbstractController
             throw $this->createNotFoundException('Escola não encontrada');
         }
 
-        $schools->remove($school, true);
+        $status = $school->getStatus();
+
+        if ($status == ['ATIVO']) {
+            $school->setStatus(['INATIVO']);
+        } else if ($status == ['INATIVO']) {
+            $school->setStatus(['ATIVO']);
+        }
+
+        $schools->save($school, true);
 
         return $this->redirectToRoute('app_admin_school_list');
     }
@@ -49,6 +57,7 @@ class SchoolVacinController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $school->setName($form['name']->getData());
+            $school->setStatus(['ATIVO']);
             $schools->save($school, true);
             }
 
@@ -58,4 +67,30 @@ class SchoolVacinController extends AbstractController
             'SchoolForm' => $form
         ]);
     }
+
+    #[Route('/admin/school/edit/{id}', name: 'app_admin_school_edit')]
+    public function edit(Request $request, SchoolVacinRepository $schools, $id): Response
+    {
+        $school = $schools->find($id);
+
+        if (!$school) {
+            throw $this->createNotFoundException('Escola não encontrada');
+        }
+
+        $form = $this->createForm(SchoolVacinType::class, $school);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $school->setName($form['name']->getData());
+            $school->setStatus('ATIVO');
+            $schools->save($school, true);
+            return $this->redirectToRoute('app_admin_school_list');
+        }
+
+        return $this->render('admin/pages/school_vacin/edit.html.twig', [
+            'SchoolForm' => $form,
+            'school' => $school,
+        ]);
+    }
+
 }

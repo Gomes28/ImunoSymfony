@@ -22,33 +22,45 @@ class PaymentController extends AbstractController
                               BuyRepository $buyRepository,
                               EntityManagerInterface $entityManager): Response
     {
-        $data = json_decode($request->getContent(), true);
+        $json = array_merge($request->query->all(), $request->request->all());
 
-        $ReturnMp = new ReturnMp();
-        $ReturnMp->setDadosMp($data);
+        // acessar o campo "data_id" na matriz PHP
+        $idReference = $json['data_id'];
 
-        $entityManager->persist($ReturnMp);
-        $entityManager->flush();
+        $payment = $mercadoPagoService->findById($idReference);
 
-//        $idReference = $data['data_id'];
-//
-//        $payment = $mercadoPagoService->findById($idReference);
-//
-//        dd($payment);
-//
-//        if ($payment) {
-//
-//            try {
-//                $status = $payment->status;
-//                /** @var Buy $buy */
-//                $buy = $buyRepository->findForReference($reference);
-//
-//                $response = ['status' => $status, 'buy' => $buy?->getId(), 'referenceID' => $idReference];
-//
-//            } catch (\Exception $e) {
-//                dd($e);
-//            }
-//        }
-            return new Response('ok!', 200);
+        if ($payment) {
+
+            try {
+                $status = $payment->status;
+
+                /** @var Buy $buy */
+                $buy = $buyRepository->findForReference($reference);
+
+                $response = ['status' => $status, 'buy' => $buy?->getId(), 'referenceID' => $idReference];
+
+                $ReturnMp = new ReturnMp();
+                $ReturnMp->setIdMp($idReference);
+                $ReturnMp->setDadosMp([$response]);
+
+                // persistir o objeto ReturnMp no banco de dados
+                $entityManager->persist($ReturnMp);
+                $entityManager->flush();
+
+                if ($buy) {
+                    if ($status === "approved" && $buy->getStatus() != "approved") {
+
+                    } elseif (in_array(trim(strtolower($status)),['rejected',"failure","cancelled","refunded"])) {
+                    }
+                    $buy->setStatus(trim($status));
+                    $entityManager->flush();
+                    return new Response(null, 200);
+                }
+
+            } catch (\Exception $e) {
+                dd($e);
+            }
+        }
+        return new Response('ok!', 200);
     }
 }

@@ -16,6 +16,7 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
         'b6b991a57620e2fb6b2f66f03fe9ddc2' => __DIR__ . '/..' . '/symfony/string/Resources/functions.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
+        '2cffec82183ee1cea088009cef9a6fc3' => __DIR__ . '/..' . '/ezyang/htmlpurifier/library/HTMLPurifier.composer.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
@@ -28,6 +29,10 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
         'p' => 
         array (
             'phpDocumentor\\Reflection\\' => 25,
+        ),
+        'Z' => 
+        array (
+            'ZipStream\\' => 10,
         ),
         'W' => 
         array (
@@ -118,19 +123,25 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
         ),
         'P' => 
         array (
+            'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Link\\' => 9,
+            'Psr\\Http\\Message\\' => 17,
+            'Psr\\Http\\Client\\' => 16,
             'Psr\\EventDispatcher\\' => 20,
             'Psr\\Container\\' => 14,
             'Psr\\Clock\\' => 10,
             'Psr\\Cache\\' => 10,
             'PhpParser\\' => 10,
+            'PhpOffice\\PhpSpreadsheet\\' => 25,
             'PHPStan\\PhpDocParser\\' => 21,
         ),
         'M' => 
         array (
+            'MyCLabs\\Enum\\' => 13,
             'Monolog\\' => 8,
             'MercadoPago\\' => 12,
+            'Matrix\\' => 7,
             'Masterminds\\' => 12,
         ),
         'G' => 
@@ -162,6 +173,10 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
             'Doctrine\\Bundle\\DoctrineBundle\\' => 31,
             'DeepCopy\\' => 9,
         ),
+        'C' => 
+        array (
+            'Complex\\' => 8,
+        ),
         'B' => 
         array (
             'Brick\\Math\\' => 11,
@@ -180,6 +195,10 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
             0 => __DIR__ . '/..' . '/phpdocumentor/reflection-common/src',
             1 => __DIR__ . '/..' . '/phpdocumentor/reflection-docblock/src',
             2 => __DIR__ . '/..' . '/phpdocumentor/type-resolver/src',
+        ),
+        'ZipStream\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/maennchen/zipstream-php/src',
         ),
         'Webmozart\\Assert\\' => 
         array (
@@ -481,6 +500,10 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
         array (
             0 => __DIR__ . '/..' . '/ramsey/collection/src',
         ),
+        'Psr\\SimpleCache\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/simple-cache/src',
+        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
@@ -488,6 +511,15 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
         'Psr\\Link\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/link/src',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
+        ),
+        'Psr\\Http\\Client\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
         'Psr\\EventDispatcher\\' => 
         array (
@@ -509,9 +541,17 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'PhpOffice\\PhpSpreadsheet\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/phpoffice/phpspreadsheet/src/PhpSpreadsheet',
+        ),
         'PHPStan\\PhpDocParser\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpstan/phpdoc-parser/src',
+        ),
+        'MyCLabs\\Enum\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/myclabs/php-enum/src',
         ),
         'Monolog\\' => 
         array (
@@ -524,6 +564,10 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
             2 => __DIR__ . '/..' . '/mercadopago/dx-php/src/MercadoPago/Generic',
             3 => __DIR__ . '/..' . '/mercadopago/dx-php/src/MercadoPago/Entities',
             4 => __DIR__ . '/..' . '/mercadopago/dx-php/src/MercadoPago/Entities/Shared',
+        ),
+        'Matrix\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markbaker/matrix/classes/src',
         ),
         'Masterminds\\' => 
         array (
@@ -610,6 +654,10 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
+        'Complex\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/markbaker/complex/classes/src',
+        ),
         'Brick\\Math\\' => 
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
@@ -625,6 +673,16 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'H' => 
+        array (
+            'HTMLPurifier' => 
+            array (
+                0 => __DIR__ . '/..' . '/ezyang/htmlpurifier/library',
+            ),
         ),
     );
 
@@ -1254,6 +1312,7 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/type/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/type/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Stringable' => __DIR__ . '/..' . '/myclabs/php-enum/stubs/Stringable.php',
         'TheSeer\\Tokenizer\\Exception' => __DIR__ . '/..' . '/theseer/tokenizer/src/Exception.php',
         'TheSeer\\Tokenizer\\NamespaceUri' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUri.php',
         'TheSeer\\Tokenizer\\NamespaceUriException' => __DIR__ . '/..' . '/theseer/tokenizer/src/NamespaceUriException.php',
@@ -1270,6 +1329,7 @@ class ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit26d4ee5bc531b673cdf00f9b8690d3c1::$classMap;
 
         }, null, ClassLoader::class);

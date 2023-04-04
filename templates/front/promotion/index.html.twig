@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="bg-white">
+    <header>
+        {{ include('front/components/header.html.twig') }}
+    </header>
+
+    <div class="relative bg-gray-900">
+
+        <div aria-hidden="true" class="absolute inset-0 overflow-hidden">
+            <img src="{{ asset('uploads/banner/' ~ promocao.imageFilename) }}" alt="" class="w-full h-full object-center object-cover">
+        </div>
+        <div aria-hidden="true" class="absolute inset-0 bg-gray-900 opacity-50"></div>
+        <div class="relative max-w-3xl mx-auto py-32 px-6 flex flex-col items-center text-center sm:py-64 lg:px-0">
+            <h1 class="text-4xl font-extrabold tracking-tight text-white lg:text-6xl">Bem Vindo a Promoção ImunoVacin {{ promocao.name }}</h1>
+            <p class="mt-4 text-xl text-white">{{ promocao.description }}</p>
+            <a href="#" class="mt-8 inline-block bg-white border border-transparent rounded-md py-3 px-8 text-base font-medium text-gray-900 hover:bg-gray-100">Comprar Agora</a>
+        </div>
+    </div>
+
+{# Product Section Start #}
+    {% if products is empty %}
+    <br/>
+        <div class="bg-white">
+            <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+                <h2 class="mb-3 text-2xl font-bold text-gray-700">Ainda não possui produtos para venda</h2>
+            </div>
+        </div>
+    {% else %}
+    <div class="bg-white">
+        <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+            <h2 class="mb-3 text-2xl font-bold text-gray-700">Produtos</h2>
+
+            <div class="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+                {% for product in products %}
+                    <a href="{{ path('app_promotion_productId', {'id': promocao.id, 'product_id': product.id}) }}" class="group">
+                        <div class="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+                            <img src="{{ asset('uploads/products/' ~ product.imageFilename) }}" alt="{{ product.name }}" class="h-full w-full object-cover object-center group-hover:opacity-75">
+                        </div>
+                        <h1 class="mt-4 text-lg font-bold text-gray-700">{{ product.name }}</h1>
+                        <p class="mt-1 text-lg font-medium text-gray-900">R$: {{ product.price|number_format(2, ',', '.') }}</p>
+                    </a>
+                {% endfor %}
+            </div>
+
+        </div>
+    </div>
+    {% endif %}
+    {# Product Section Finish #}
+
+    <main>
+        {{ include('front/components/_teamSection.html.twig') }}
+        {{ include('front/components/feedback.html.twig') }}
+        {{ include('front/components/empresas.html.twig') }}
+    </main>
+
+    <footer>
+        {{ include('front/components/footer.html.twig') }}
+    </footer>
+</div>
+{% endblock %}

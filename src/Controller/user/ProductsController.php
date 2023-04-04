@@ -15,7 +15,13 @@ class ProductsController extends AbstractController
 {
     public function index(ProductsRepository $productsRepository): Response
     {
-        $products = $productsRepository->findAll();
+        $products = $productsRepository->createQueryBuilder('u')
+            ->where('u.Status LIKE :status')
+            ->andWhere('u.promotionSistem IS NULL')
+            ->setParameter('status', '%"ATIVO"%')
+            ->getQuery()
+            ->getResult();
+
         return $this->render('front/components/_productsList.html.twig', [
             'products' => $products
         ]);
@@ -26,11 +32,14 @@ class ProductsController extends AbstractController
     {
         $product = $productsRepository->find($id);
 
-        $school = $schoolVacinRepository->findAll();
+        $productID = $product->getPromotionSistem();
 
-        return $this->render('front/page/ProductById.html.twig', [
-            'products' => [$product],
-            'schools' => $school,
-        ]);
+        if (is_null($productID)){
+            return $this->render('front/page/ProductById.html.twig', [
+                'products' => [$product],
+            ]);
+        } else {
+            return $this->redirectToRoute('app_page');
+        }
     }
 }

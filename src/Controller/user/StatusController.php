@@ -22,27 +22,25 @@ class StatusController extends AbstractController
     public function success(string $reference): Response
     {
         $buy = $this->getBuy($reference);
-        return $this->returnRender($buy,'success');
+        return $this->returnRender('success');
     }
 
     #[Route('/pending/{reference}', name: 'status_pending')]
     public function pending(string $reference): Response
     {
         $buy = $this->getBuy($reference);
-        return $this->returnRender($buy,'pending');
+        return $this->returnRender('pending');
     }
 
     #[Route('/failure/{reference}', name: 'status_failure')]
     public function failure(string $reference): Response
     {
         $buy = $this->getBuy($reference);
-        return $this->returnRender($buy,'failure');
+        return $this->returnRender('failure');
     }
 
-    private function returnRender($buy, $pagename = ''){
-        return $this->render("front/pages/status/$pagename.html.twig", [
-            'buy' => $buy,
-        ]);
+    private function returnRender($pagename = ''){
+        return $this->render("front/pages/status/$pagename.html.twig");
     }
 
     private function getBuy($reference){

@@ -18,7 +18,7 @@ class Products
     #[ORM\Column(length: 255)]
     private ?string $Name = null;
 
-    #[ORM\Column(length: 255)]
+    #[ORM\Column(length: 655)]
     private ?string $Description = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 12, scale: '0')]
@@ -29,6 +29,12 @@ class Products
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $imageFilename = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Product')]
+    private ?PromotionSistem $promotionSistem = null;
+
+    #[ORM\Column]
+    private array $Status = [];
 
     public function getImageFilename(): ?string
     {
@@ -129,6 +135,30 @@ class Products
     public function setCategory(?Category $category): self
     {
         $this->category = $category;
+
+        return $this;
+    }
+
+    public function getPromotionSistem(): ?PromotionSistem
+    {
+        return $this->promotionSistem;
+    }
+
+    public function setPromotionSistem(?PromotionSistem $promotionSistem): self
+    {
+        $this->promotionSistem = $promotionSistem;
+
+        return $this;
+    }
+
+    public function getStatus(): array
+    {
+        return $this->Status;
+    }
+
+    public function setStatus(array $Status): self
+    {
+        $this->Status = $Status;
 
         return $this;
     }

@@ -24,16 +24,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $Name = null;
 
     #[ORM\Column(length: 255)]
+    #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $password = null;
-
-    #[ORM\Column(length: 255)]
+    #[UniqueEntity(fields: ['telefone'], message: 'There is already an account with this telefone')]
     private ?string $telefone = null;
 
     #[ORM\Column(length: 11)]
+    #[UniqueEntity(fields: ['cpf'], message: 'There is already an account with this cpf')]
     private ?string $cpf = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $password = null;
 
     #[ORM\Column]
     private array $roles = [];
